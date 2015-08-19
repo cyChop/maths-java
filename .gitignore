@@ -1,8 +1,18 @@
-target/
+# Maven
+/*/target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
 pom.xml.next
 release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
+
+# Cloud9
+/.c9/
+
+# Eclipse
+/*/.settings/
+/*/.classpath
+/*/.project
+/.settings/
+/.project
+/bin/
