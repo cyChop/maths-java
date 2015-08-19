@@ -10,5 +10,5 @@ Some math alogrithms just for the fun of coding them
 [build]: https://travis-ci.org/cyChop/maths-java
 [coverage-shield]: http://img.shields.io/coveralls/cyChop/maths-java/master.svg
 [coverage]: https://coveralls.io/r/cyChop/maths-java?branch=master
-[license-shield]: https://img.shields.io/badge/license-BSD_3--Clause-blue.svg
-[license]: http://opensource.org/licenses/BSD-3-Clause
+[license-shield]: https://img.shields.io/badge/license-MIT-blue.svg
+[license]: http://opensource.org/licenses/MIT
