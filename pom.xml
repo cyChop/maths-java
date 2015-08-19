@@ -41,26 +41,24 @@
     <coveralls.plugin.version>3.0.1</coveralls.plugin.version>
   </properties>
 
-  <dependencyManagement>
-    <dependencies>
-      <!--  _____       _    -->
-      <!-- |_   _|__ __| |_  -->
-      <!--   | |/ -_|_-<  _| -->
-      <!--   |_|\___/__/\__| -->
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>${junit.version}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>jdepend</groupId>
-        <artifactId>jdepend</artifactId>
-        <version>${jdepend.version}</version>
-        <scope>test</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+  <dependencies>
+    <!--  _____       _    -->
+    <!-- |_   _|__ __| |_  -->
+    <!--   | |/ -_|_-<  _| -->
+    <!--   |_|\___/__/\__| -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>jdepend</groupId>
+      <artifactId>jdepend</artifactId>
+      <version>${jdepend.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
