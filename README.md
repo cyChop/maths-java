@@ -4,7 +4,12 @@
 [![Coverage Status][coverage-shield]][coverage]
 [![License][license-shield]][license]
 
-Some math alogrithms just for the fun of coding them
+Some math algorithms just for the fun of coding them.
+
+Planned to be included:
+
+* Prime detection and factorization (with several algorithms)
+* Format number conversion (Roman, &hellip;)
 
 [build-shield]: http://img.shields.io/travis/cyChop/maths-java/master.svg
 [build]: https://travis-ci.org/cyChop/maths-java
