@@ -39,21 +39,20 @@ public class RomanConverter {
         if (roman != null) {
             String roman2 = roman.trim().toUpperCase();
             int length = roman2.length();
-            if (length != 0) {
-                int i = 0;
-                while (i < length) {
-                    char current = roman2.charAt(i);
-                    int value = getIntValue(current);
-                    int group = 0;
-                    do {
-                        group += value;
-                        i++;
-                    } while (i < length && roman2.charAt(i) == current);
-                    if (i == length || getIntValue(roman2.charAt(i)) < value) {
-                        result += group;
-                    } else {
-                        result -= group;
-                    }
+            int i = 0;
+            while (i < length) {
+                char current = roman2.charAt(i);
+                int value = getIntValue(current);
+                int group = 0;
+                do {
+                    group += value;
+                    i++;
+                } while (i < length && roman2.charAt(i) == current);
+
+                if (i == length || getIntValue(roman2.charAt(i)) < value) {
+                    result += group;
+                } else {
+                    result -= group;
                 }
             }
         }
