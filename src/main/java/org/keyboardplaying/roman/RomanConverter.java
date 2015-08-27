@@ -77,25 +77,27 @@ public class RomanConverter {
                     "This number is too large to be written as a Roman numeral.");
         }
 
-        StringBuilder roman = new StringBuilder();
-        int toConvert = value;
         int five = TEN / 2;
-        for (int i = MAX_10_POWER; i > 0; i--) {
-            int tenPower = (int) Math.pow(TEN, i);
-            int tenth = toConvert / tenPower;
-            toConvert -= tenth * tenPower;
 
-            Character tenChar = getChar(tenPower);
+        StringBuilder roman = new StringBuilder();
+
+        int toConvert = value;
+        for (int i = MAX_10_POWER; i > 0; i--) {
+            int tenthPower = (int) Math.pow(TEN, i);
+            int tenth = toConvert / tenthPower;
+            toConvert -= tenth * tenthPower;
+
+            Character tenthChar = getChar(tenthPower);
             if (tenth == five - 1 || tenth == TEN - 1) {
-                roman.append(tenChar);
+                roman.append(tenthChar);
                 tenth++;
             }
             if (tenth > five) {
-                roman.append(getChar(five * tenPower));
+                roman.append(getChar(five * tenthPower));
                 tenth -= five;
             }
             while (tenth > 0) {
-                roman.append(tenChar);
+                roman.append(tenthChar);
                 tenth--;
             }
         }
