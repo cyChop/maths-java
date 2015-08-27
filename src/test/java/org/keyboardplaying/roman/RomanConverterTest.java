@@ -11,10 +11,10 @@ import org.junit.Test;
  */
 public class RomanConverterTest {
 
-    @Test
-    public void fromTest() {
-        RomanConverter rc = new RomanConverter();
+    private RomanConverter rc = new RomanConverter();
 
+    @Test
+    public void testFrom() {
         // Empty
         assertEquals(0, rc.from(null));
         assertEquals(0, rc.from("  "));
@@ -35,5 +35,28 @@ public class RomanConverterTest {
         assertEquals(18, rc.from("XVIII"));
         assertEquals(1910, rc.from("MDCCCCX"));
         assertEquals(1903, rc.from("MDCDIII"));
+    }
+
+    @Test
+    public void testTo() {
+        // Min/max
+        assertEquals("", rc.to(0));
+        assertEquals("MMMDCCLXXVII", rc.to(3777));
+
+        // More complicated
+        assertEquals("XLIX", rc.to(49));
+        assertEquals("XCIX", rc.to(99));
+        assertEquals("DI", rc.to(501));
+        assertEquals("MCMDCCCV", rc.to(1985));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testToWithNegative() {
+        rc.to(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testToWithTooLarge() {
+        rc.to(3778);
     }
 }

@@ -10,6 +10,10 @@ import org.keyboardplaying.util.BiMap;
  */
 public class RomanConverter {
 
+    private static final int MAX_VALUE = 3777;
+    private static final int MAX_10_POWER = 3;
+    private static final int TEN = 10;
+
     private BiMap<Character, Integer> correspondance;
 
     {
@@ -62,5 +66,44 @@ public class RomanConverter {
 
     private int getIntValue(char roman) {
         return correspondance.get(Character.valueOf(roman)).intValue();
+    }
+
+    public String to(int value) {
+        if (value < 0) {
+            throw new IllegalArgumentException(
+                    "Only positive values can be written as Roman numerals.");
+        } else if (value > MAX_VALUE) {
+            throw new IllegalArgumentException(
+                    "This number is too large to be written as a Roman numeral.");
+        }
+
+        StringBuilder roman = new StringBuilder();
+        int toConvert = value;
+        int five = TEN / 2;
+        for (int i = MAX_10_POWER; i > 0; i--) {
+            int tenPower = (int) Math.pow(TEN, i);
+            int tenth = toConvert / tenPower;
+            toConvert -= tenth * tenPower;
+
+            Character tenChar = getChar(tenPower);
+            if (tenth == five - 1 || tenth == TEN - 1) {
+                roman.append(tenChar);
+                tenth++;
+            }
+            if (tenth > five) {
+                roman.append(getChar(five * tenPower));
+                tenth -= five;
+            }
+            while (tenth > 0) {
+                roman.append(tenChar);
+                tenth--;
+            }
+        }
+
+        return roman.toString();
+    }
+
+    private Character getChar(int value) {
+        return correspondance.getKey(Integer.valueOf(value));
     }
 }
