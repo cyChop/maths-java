@@ -47,7 +47,7 @@ public class RomanConverterTest {
         assertEquals("XLIX", rc.to(49));
         assertEquals("XCIX", rc.to(99));
         assertEquals("DI", rc.to(501));
-        assertEquals("MCMDCCCV", rc.to(1985));
+        assertEquals("MCMLXXXV", rc.to(1985));
     }
 
     @Test(expected = IllegalArgumentException.class)

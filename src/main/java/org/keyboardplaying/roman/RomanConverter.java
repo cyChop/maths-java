@@ -82,7 +82,7 @@ public class RomanConverter {
         StringBuilder roman = new StringBuilder();
 
         int toConvert = value;
-        for (int i = MAX_10_POWER; i > 0; i--) {
+        for (int i = MAX_10_POWER; i >= 0; i--) {
             int tenthPower = (int) Math.pow(TEN, i);
             int tenth = toConvert / tenthPower;
             toConvert -= tenth * tenthPower;
@@ -92,7 +92,10 @@ public class RomanConverter {
                 roman.append(tenthChar);
                 tenth++;
             }
-            if (tenth > five) {
+            if (tenth == TEN) {
+                roman.append(getChar(TEN * tenthPower));
+                tenth = 0;
+            } else if (tenth >= five) {
                 roman.append(getChar(five * tenthPower));
                 tenth -= five;
             }
