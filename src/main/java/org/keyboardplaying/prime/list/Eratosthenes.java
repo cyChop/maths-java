@@ -7,11 +7,20 @@ import java.util.Arrays;
  *
  * @author Cyrille Chopelet (http://keyboardplaying.org)
  */
-// TODO Javadoc
 public class Eratosthenes {
 
     private static final int FIRST_PRIME = 2;
 
+    /**
+     * Generates a sieve of Eratosthenes up to supplied value.
+     * <p/>
+     * The sieve will be returned as an array. The index will be the number, and for each index, the
+     * value will be {@code true} for a prime number, {@code false} otherwise.
+     *
+     * @param max
+     *            the maximum value for the sieve
+     * @return the sieve
+     */
     public boolean[] makeSieve(int max) {
         boolean[] sieve = new boolean[max + 1];
         Arrays.fill(sieve, FIRST_PRIME, sieve.length, true);

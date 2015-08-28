@@ -68,6 +68,13 @@ public class RomanConverter {
         return correspondance.get(Character.valueOf(roman)).intValue();
     }
 
+    /**
+     * Parses an integer as a Roman numeral.
+     *
+     * @param value
+     *            the integer
+     * @return the Roman numeral
+     */
     public String to(int value) {
         if (value < 0) {
             throw new IllegalArgumentException(
