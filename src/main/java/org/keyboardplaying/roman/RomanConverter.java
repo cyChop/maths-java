@@ -30,8 +30,8 @@ public class RomanConverter {
     /**
      * Parses a Roman numeral to an integer.
      * <p/>
-     * Due to the numerous variants of Roman numerals writing, no constraint is checked. At the
-     * current time, this algorithm is a dumb application of conversion rules.
+     * Due to the numerous variants of Roman numerals writing, no constraint is checked. At the current time, this
+     * algorithm is a dumb application of conversion rules.
      *
      * @param roman
      *            the Roman numeral
@@ -77,11 +77,9 @@ public class RomanConverter {
      */
     public String to(int value) {
         if (value < 0) {
-            throw new IllegalArgumentException(
-                    "Only positive values can be written as Roman numerals.");
+            throw new IllegalArgumentException("Only positive values can be written as Roman numerals.");
         } else if (value > MAX_VALUE) {
-            throw new IllegalArgumentException(
-                    "This number is too large to be written as a Roman numeral.");
+            throw new IllegalArgumentException("This number is too large to be written as a Roman numeral.");
         }
 
         int five = TEN / 2;

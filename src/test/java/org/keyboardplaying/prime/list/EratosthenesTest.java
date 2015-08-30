@@ -3,7 +3,6 @@ package org.keyboardplaying.prime.list;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
 import org.keyboardplaying.prime.PrimeNumbers;
 
 /**
@@ -13,8 +12,9 @@ import org.keyboardplaying.prime.PrimeNumbers;
  */
 public class EratosthenesTest {
 
+    /** Tests {@link Eratosthenes#makeSieve(int)}. */
     @Test
-    public void testSieve() {
+    public void testMakeSieve() {
         boolean[] sieve = new Eratosthenes().makeSieve(1000);
         for (int i = 0; i < sieve.length; i++) {
             boolean prime = PrimeNumbers.PRIMES.contains(Integer.valueOf(i));

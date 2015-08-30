@@ -13,6 +13,7 @@ import org.junit.Test;
  */
 public class BiHashMapTest {
 
+    /** Tests {@link BiHashMap#put(Object, Object)} and {@link BiHashMap#remove(Object)} (among other methods). */
     @Test
     public void testPutAndRemove() {
         BiHashMap<String, Integer> map = new BiHashMap<>();

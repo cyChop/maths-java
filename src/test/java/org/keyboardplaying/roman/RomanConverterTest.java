@@ -13,6 +13,7 @@ public class RomanConverterTest {
 
     private RomanConverter rc = new RomanConverter();
 
+    /** Tests {@link RomanConverter#from(String)}. */
     @Test
     public void testFrom() {
         // Empty
@@ -37,6 +38,7 @@ public class RomanConverterTest {
         assertEquals(1903, rc.from("MDCDIII"));
     }
 
+    /** Tests {@link RomanConverter#to(int)}. */
     @Test
     public void testTo() {
         // Min/max
@@ -50,11 +52,13 @@ public class RomanConverterTest {
         assertEquals("MCMLXXXV", rc.to(1985));
     }
 
+    /** Tests {@link RomanConverter#to(int)} for a negative value. */
     @Test(expected = IllegalArgumentException.class)
     public void testToWithNegative() {
         rc.to(-1);
     }
 
+    /** Tests {@link RomanConverter#to(int)} for a value too large for the converter. */
     @Test(expected = IllegalArgumentException.class)
     public void testToWithTooLarge() {
         rc.to(3778);

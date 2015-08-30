@@ -14,8 +14,8 @@ public class Eratosthenes {
     /**
      * Generates a sieve of Eratosthenes up to supplied value.
      * <p/>
-     * The sieve will be returned as an array. The index will be the number, and for each index, the
-     * value will be {@code true} for a prime number, {@code false} otherwise.
+     * The sieve will be returned as an array. The index will be the number, and for each index, the value will be
+     * {@code true} for a prime number, {@code false} otherwise.
      *
      * @param max
      *            the maximum value for the sieve
