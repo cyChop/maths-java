@@ -1,0 +1,28 @@
+= Maths
+Cyrille Chopelet <cyrille.chopelet@mines-nancy.org>
+
+// Set your repository informations here.
+:github-user: cyChop
+:github-repo: maths-java
+:pom-groupid: org.keyboardplaying
+:pom-artifactid: math-algorithms
+:license-name: MIT
+:license-shield: {license-name}
+:license-url: http://opensource.org/licenses/MIT
+
+// The badges. Should not require any change.
+:url-shields: http://img.shields.io/
+:url-sonar: sonar.keyboardplaying.org
+image:{url-shields}travis/{github-user}/{github-repo}/master.svg[Build status, link="https://travis-ci.org/{github-user}/{github-repo}"]
+image:{url-shields}sonar/http/{url-sonar}/{pom-groupid}:{pom-artifactid}/coverage.svg[Test coverage, link="http://{url-sonar}"]
+image:{url-shields}sonar/http/{url-sonar}/{pom-groupid}:{pom-artifactid}/tech_debt.svg[Technical debt, link="http://{url-sonar}"]
+image:{url-shields}badge/license-{license-shield}-blue.svg[License: {license-name}, link="{license-url}"]
+
+// Now, the main documentation.
+
+Some math algorithms just for the fun of coding them.
+
+Planned to be included:
+
+* Prime detection and factorization (with several algorithms)
+* Format number conversion (Roman, ...)
