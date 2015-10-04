@@ -16,7 +16,5 @@ script
   - "mvn org.jacoco:jacoco-maven-plugin:$JACOCO_VERSION:prepare-agent install"
 
 after_success:
-# Old configuration for Coveralls
-# - "mvn org.jacoco:jacoco-maven-plugin:$JACOCO_VERSION:report org.eluder.coveralls:coveralls-maven-plugin:report"
   - "[[ $TRAVIS_PULL_REQUEST == false ]] && [[ $TRAVIS_BRANCH == quality ]] && mvn sonar:sonar"
   
