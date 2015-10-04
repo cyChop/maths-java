@@ -3,10 +3,11 @@ language: java
 sudo: false
 
 env:
-  - JACOCO_VERSION=0.7.4.201502262128
+  global:
+    - JACOCO_VERSION=0.7.4.201502262128
 
 jdk:
-  - oraclejdk8
+  - oraclejdk7
 
 before_script:
   - "mvn clean install"
