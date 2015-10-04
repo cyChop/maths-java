@@ -2,8 +2,6 @@ sudo: false
 
 env:
   - JACOCO_VERSION=0.7.4.201502262128
-  - GITHUB_USER=cyChop
-  - GITHUB_REPO=maths-java
 
 language: java
 
@@ -18,5 +16,5 @@ script
 
 after_success:
   - "mvn org.jacoco:jacoco-maven-plugin:$JACOCO_VERSION:report org.eluder.coveralls:coveralls-maven-plugin:report"
-  - "[[ $TRAVIS_REPO_SLUG == $GITHUB_USER/$GITHUB_REPO ]] && [[ $TRAVIS_BRANCH == quality ]] && mvn sonar:sonar"
+  - "[[ $TRAVIS_PULL_REQUEST == false ]] && [[ $TRAVIS_BRANCH == quality ]] && mvn sonar:sonar"
   
