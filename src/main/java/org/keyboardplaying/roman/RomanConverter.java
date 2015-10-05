@@ -13,18 +13,19 @@ public class RomanConverter {
     private static final int MAX_VALUE = 3777;
     private static final int MAX_10_POWER = 3;
     private static final int TEN = 10;
+    private static final int FIVE = 5;
 
-    private BiMap<Character, Integer> correspondance;
+    private static final BiMap<Character, Integer> CORRESPONDANCE;
 
-    {
-        correspondance = new BiHashMap<>();
-        correspondance.put(Character.valueOf('I'), Integer.valueOf(1));
-        correspondance.put(Character.valueOf('V'), Integer.valueOf(5));
-        correspondance.put(Character.valueOf('X'), Integer.valueOf(10));
-        correspondance.put(Character.valueOf('L'), Integer.valueOf(50));
-        correspondance.put(Character.valueOf('C'), Integer.valueOf(100));
-        correspondance.put(Character.valueOf('D'), Integer.valueOf(500));
-        correspondance.put(Character.valueOf('M'), Integer.valueOf(1000));
+    static {
+        CORRESPONDANCE = new BiHashMap<>();
+        CORRESPONDANCE.put(Character.valueOf('I'), Integer.valueOf(1));
+        CORRESPONDANCE.put(Character.valueOf('V'), Integer.valueOf(5));
+        CORRESPONDANCE.put(Character.valueOf('X'), Integer.valueOf(10));
+        CORRESPONDANCE.put(Character.valueOf('L'), Integer.valueOf(50));
+        CORRESPONDANCE.put(Character.valueOf('C'), Integer.valueOf(100));
+        CORRESPONDANCE.put(Character.valueOf('D'), Integer.valueOf(500));
+        CORRESPONDANCE.put(Character.valueOf('M'), Integer.valueOf(1000));
     }
 
     /**
@@ -65,7 +66,7 @@ public class RomanConverter {
     }
 
     private int getIntValue(char roman) {
-        return correspondance.get(Character.valueOf(roman)).intValue();
+        return CORRESPONDANCE.get(Character.valueOf(roman)).intValue();
     }
 
     /**
@@ -82,38 +83,41 @@ public class RomanConverter {
             throw new IllegalArgumentException("This number is too large to be written as a Roman numeral.");
         }
 
-        int five = TEN / 2;
+        return appendRoman(new StringBuilder(), MAX_10_POWER, value).toString();
+    }
 
-        StringBuilder roman = new StringBuilder();
+    private StringBuilder appendRoman(StringBuilder sb, int power, int value) {
+        if (power >= 0) {
+            int rank = (int) Math.pow(TEN, power);
+            int unit = value / rank;
+            int remainder = value - unit * rank;
 
-        int toConvert = value;
-        for (int i = MAX_10_POWER; i >= 0; i--) {
-            int tenthPower = (int) Math.pow(TEN, i);
-            int tenth = toConvert / tenthPower;
-            toConvert -= tenth * tenthPower;
+            Character unitChar = getChar(rank);
+            if (unit == FIVE - 1 || unit == TEN - 1) {
+                // One rank below: substract one unit to upper char
+                sb.append(unitChar).append(getChar(++unit * rank));
 
-            Character tenthChar = getChar(tenthPower);
-            if (tenth == five - 1 || tenth == TEN - 1) {
-                roman.append(tenthChar);
-                tenth++;
+            } else {
+
+                // Greater than five, use the mid-dozen char
+                if (unit >= FIVE) {
+                    sb.append(getChar(FIVE * rank));
+                    unit -= FIVE;
+                }
+
+                // Add single units
+                while (unit > 0) {
+                    sb.append(unitChar);
+                    unit--;
+                }
             }
-            if (tenth == TEN) {
-                roman.append(getChar(TEN * tenthPower));
-                tenth = 0;
-            } else if (tenth >= five) {
-                roman.append(getChar(five * tenthPower));
-                tenth -= five;
-            }
-            while (tenth > 0) {
-                roman.append(tenthChar);
-                tenth--;
-            }
+
+            appendRoman(sb, power - 1, remainder);
         }
-
-        return roman.toString();
+        return sb;
     }
 
     private Character getChar(int value) {
-        return correspondance.getKey(Integer.valueOf(value));
+        return CORRESPONDANCE.getKey(Integer.valueOf(value));
     }
 }
