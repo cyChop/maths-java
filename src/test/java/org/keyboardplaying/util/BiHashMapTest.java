@@ -2,7 +2,11 @@ package org.keyboardplaying.util;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -19,14 +23,27 @@ public class BiHashMapTest {
         BiHashMap<String, Integer> map = new BiHashMap<>();
         assertSize(0, map);
 
-        map.put("A", 1);
-        map.put("B", 2);
+        Map<String, Integer> all = new HashMap<>();
+        all.put("A", 1);
+        all.put("B", 2);
+        map.putAll(all);
+
         assertTrue(map.containsKey("A"));
+        assertEquals(Integer.valueOf(1), map.get("A"));
+        assertEquals("B", map.getKey(2));
+        assertNull(map.get("C"));
+        assertNull(map.getKey(3));
         assertSize(2, map);
 
         map.put("1", 1);
         assertFalse(map.containsKey("A"));
         assertTrue(map.containsValue(2));
+        assertSize(2, map);
+
+        map.put("1", 0);
+        assertTrue(map.containsKey("1"));
+        assertFalse(map.containsValue(1));
+        assertTrue(map.containsValue(0));
         assertSize(2, map);
 
         map.removeValue(2);
@@ -37,9 +54,22 @@ public class BiHashMapTest {
         assertSize(0, map);
     }
 
+    /** Tests {@link BiHashMap#clear()}. */
+    @Test
+    public void testClear() {
+        BiHashMap<String, Integer> map = new BiHashMap<>();
+        map.put("A", 1);
+        map.put("B", 2);
+        assertSize(2, map);
+
+        map.clear();
+        assertSize(0, map);
+    }
+
     private void assertSize(int expected, BiHashMap<String, Integer> map) {
         assertEquals(expected == 0, map.isEmpty());
         assertEquals(expected, map.size());
+        assertEquals(expected, map.entrySet().size());
         assertEquals(expected, map.keySet().size());
         assertEquals(expected, map.values().size());
     }
