@@ -25,7 +25,7 @@ public class Eratosthenes {
         boolean[] sieve = new boolean[max + 1];
         Arrays.fill(sieve, FIRST_PRIME, sieve.length, true);
 
-        double rootMax = Math.sqrt(max);
+        double rootMax = Math.ceil(Math.sqrt(max));
 
         for (int i = FIRST_PRIME; i <= rootMax; i++) {
             if (sieve[i]) {
