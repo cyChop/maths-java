@@ -28,20 +28,14 @@ public class BruteTrial {
             final int max = (int) Math.ceil(Math.sqrt(integer));
             List<Integer> primes = new ArrayList<>();
 
-            int value = integer;
+            // test 2
+            int value = useFactor(integer, Constants.FIRST_PRIME, primes, factors);
 
-            int current = Constants.FIRST_PRIME;
+            // test all odd numbers
+            int current = Constants.NEXT_PRIME;
             while (value != 1 && current <= max) {
-                boolean primeCurrent = isPrime(current, primes);
-
-                if (primeCurrent) {
-                    while (value % current == 0) {
-                        factors.add(current);
-                        value /= current;
-                    }
-                }
-
-                current++;
+                value = useFactor(value, current, primes, factors);
+                current += Constants.STEP;
             }
 
             if (value != 1) {
@@ -50,6 +44,19 @@ public class BruteTrial {
         }
 
         return factors;
+    }
+
+    private int useFactor(int value, int factor, List<Integer> primes, List<Integer> factors) {
+        boolean primeCurrent = isPrime(factor, primes);
+        int result = value;
+
+        if (primeCurrent) {
+            while (result % factor == 0) {
+                factors.add(factor);
+                result /= factor;
+            }
+        }
+        return result;
     }
 
     private boolean isPrime(int current, List<Integer> primes) {

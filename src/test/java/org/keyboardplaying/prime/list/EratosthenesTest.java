@@ -15,7 +15,14 @@ public class EratosthenesTest {
     /** Tests {@link Eratosthenes#makeSieve(int)}. */
     @Test
     public void testMakeSieve() {
-        boolean[] sieve = new Eratosthenes().makeSieve(1000);
+        testSieve(2);
+        testSieve(3);
+        testSieve(7);
+        testSieve(1000);
+    }
+
+    private void testSieve(int max) {
+        boolean[] sieve = new Eratosthenes().makeSieve(max);
         for (int i = 0; i < sieve.length; i++) {
             boolean prime = PrimeNumbers.PRIMES.contains(Integer.valueOf(i));
             boolean sieveTrue = sieve[i];
