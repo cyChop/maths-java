@@ -22,5 +22,6 @@ public class BruteTrialTest {
         assertEquals(Arrays.asList(2), factor.factorize(2));
         assertEquals(Arrays.asList(2, 2), factor.factorize(4));
         assertEquals(Arrays.asList(2, 3, 5, 11), factor.factorize(330));
+        assertEquals(Arrays.asList(997), factor.factorize(997));
     }
 }

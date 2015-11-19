@@ -25,12 +25,13 @@ public class BruteTrial {
         if (integer < Constants.FIRST_PRIME) {
             factors.add(integer);
         } else {
+            final int max = (int) Math.ceil(Math.sqrt(integer));
             List<Integer> primes = new ArrayList<>();
 
             int value = integer;
 
             int current = Constants.FIRST_PRIME;
-            while (value != 1) {
+            while (value != 1 && current <= max) {
                 boolean primeCurrent = isPrime(current, primes);
 
                 if (primeCurrent) {
@@ -43,6 +44,9 @@ public class BruteTrial {
                 current++;
             }
 
+            if (value != 1) {
+                factors.add(value);
+            }
         }
 
         return factors;
