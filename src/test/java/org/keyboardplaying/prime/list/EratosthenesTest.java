@@ -12,6 +12,8 @@ import org.keyboardplaying.prime.PrimeNumbers;
  */
 public class EratosthenesTest {
 
+    private Eratosthenes erat = new Eratosthenes();
+
     /** Tests {@link Eratosthenes#makeSieve(int)}. */
     @Test
     public void testMakeSieve() {
@@ -22,7 +24,7 @@ public class EratosthenesTest {
     }
 
     private void testSieve(int max) {
-        boolean[] sieve = new Eratosthenes().makeSieve(max);
+        boolean[] sieve = erat.makeSieve(max);
         for (int i = 0; i < sieve.length; i++) {
             boolean prime = PrimeNumbers.PRIMES.contains(Integer.valueOf(i));
             boolean sieveTrue = sieve[i];
