@@ -5,7 +5,7 @@ package org.keyboardplaying.prime;
  *
  * @author Cyrille Chopelet (http://keyboardplaying.org)
  */
-public class Constants {
+public final class Constants {
 
     /** An iteration step for algorithms optimization. */
     public static final int STEP = 2;
@@ -15,4 +15,7 @@ public class Constants {
 
     /** The second prime number (3). */
     public static final int NEXT_PRIME = 3;
+
+    private Constants() {
+    }
 }
